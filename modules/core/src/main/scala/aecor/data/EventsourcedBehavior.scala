@@ -19,6 +19,7 @@ final case class EventsourcedBehavior[M[_[_]], F[_], S, E](actions: M[ActionT[F,
 }
 
 object EventsourcedBehavior {
+
   def optionalRejectable[M[_[_]], F[_], State, Event, Rejection](
     actions: M[EitherT[ActionT[F, Option[State], Event, ?], Rejection, ?]],
     create: Event => Folded[State],
@@ -41,8 +42,10 @@ object EventsourcedBehavior {
 
 final case class Enriched[M, E](metadata: M, event: E)
 object Enriched {
+
   implicit def hasMetadata[M, E, X](implicit M: Has[M, X]): Has[Enriched[M, E], X] =
     M.contramap(_.metadata)
+
   implicit def hasEvent[M, E, X](implicit E: Has[E, X]): Has[Enriched[M, E], X] =
     E.contramap(_.event)
 }

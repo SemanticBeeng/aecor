@@ -81,6 +81,7 @@ final class StateEventJournal[F[_], K, S, E](lens: Lens[S, State[K, E]], tagging
 
   def currentEventsByTag(tag: EventTag, consumerId: ConsumerId): Processable[F, EntityEvent[K, E]] =
     new Processable[F, EntityEvent[K, E]] {
+
       override def process(f: EntityEvent[K, E] => F[Unit]): F[Unit] =
         for {
           state <- F.get

@@ -14,6 +14,7 @@ import cats.tagless.syntax.functorK._
   * Higher-kinded transformer for EitherT
   */
 final case class EitherK[M[_[_]], A, F[_]](value: M[EitherT[F, A, ?]]) extends AnyVal {
+
   def unwrap(implicit M: FunctorK[M]): M[λ[α => F[Either[A, α]]]] =
     value.mapK(new (EitherT[F, A, ?] ~> λ[α => F[Either[A, α]]]) {
       override def apply[X](fa: EitherT[F, A, X]): F[Either[A, X]] = fa.value
@@ -27,6 +28,7 @@ final case class EitherK[M[_[_]], A, F[_]](value: M[EitherT[F, A, ?]]) extends A
 }
 
 object EitherK {
+
   implicit def wireProtocol[M[_[_]]: FunctorK, F[_], A](
     implicit M: WireProtocol[M],
     aCodec: Codec[A]

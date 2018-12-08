@@ -5,6 +5,7 @@ import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{ FunSuite, Matchers }
 
 class TaggingTest extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
+
   test("Const Tagging") {
     val tagging = Tagging.const[Int](EventTag("foo"))
     forAll { x: Int =>
