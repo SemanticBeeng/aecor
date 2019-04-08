@@ -3,7 +3,12 @@ import sbtrelease.Version.Bump
 import pl.project13.scala.sbt._
 import Dependencies.versions
 
-lazy val buildSettings = inThisBuild(Seq(organization := "io.aecor", scalaVersion := "2.12.4"))
+lazy val buildSettings = inThisBuild(
+  Seq(
+    organization := "io.aecor",
+    scalaVersion := "2.12.7"
+  )
+)
 
 lazy val commonSettings = Seq(
   resolvers += "jitpack" at "https://jitpack.io",
@@ -11,7 +16,7 @@ lazy val commonSettings = Seq(
   addCompilerPlugin("org.spire-math" %% "kind-projector" % versions.kindProjector),
   parallelExecution in Test := false,
   scalacOptions in (Compile, doc) := (scalacOptions in (Compile, doc)).value
-    .filter(_ != "-Xfatal-warnings")
+    .filter(_ != "-Xfatal-warnings"),
 ) ++ warnUnusedImport
 
 lazy val aecorSettings = buildSettings ++ commonSettings ++ publishSettings
@@ -103,8 +108,21 @@ lazy val coreSettings = Seq(
     "io.circe" %% "circe-generic" % versions.circe,
     "io.circe" %% "circe-parser" % versions.circe,
     "io.circe" %% "circe-java8" % versions.circe,
-  )
+  ) ++ catsLibs
 )
+
+lazy val catsLibs =
+  Seq("org.typelevel" %% "cats-core",
+      "org.typelevel" %% "cats-free",
+      "org.typelevel" %% "cats-kernel",
+      "org.typelevel" %% "cats-laws",
+      "org.typelevel" %% "cats-macros",
+      "org.typelevel" %% "cats-testkit").map(_ % versions.cats)  ++
+  Seq("org.typelevel" %% "cats-effect").map(_ % versions.catsEffect) ++
+  Seq("org.typelevel" %% "cats-mtl-core").map(_ % versions.cats_mtl_core) ++
+  Seq("org.typelevel" %% "cats-tagless-core",
+      "org.typelevel" %% "cats-tagless-laws",
+      "org.typelevel" %% "cats-tagless-macros").map(_ % versions.catsTagless)
 
 lazy val boopickleWireProtocolSettings = Seq(
   addCompilerPlugin(

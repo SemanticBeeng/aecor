@@ -6,10 +6,10 @@ object Dependencies {
     lazy val akkaPersistenceCassandra = "0.61"
     lazy val cassandraDriverExtras = "3.1.0"
 
-    lazy val cats = "1.4.0"
+    lazy val cats = "1.6.0"
     lazy val cats_mtl_core = "0.4.0"
-    lazy val catsEffect = "1.0.0"
-    lazy val catsTagless = "0.1.0"
+    lazy val catsEffect = "1.2.0"
+    lazy val catsTagless = "0.2.0"
 
     lazy val monocle = "1.5.0-cats"
 
@@ -18,7 +18,7 @@ object Dependencies {
 
     lazy val circe = "0.9.3"
 
-    lazy val fs2 = "1.0.0"
+    lazy val fs2 = "1.0.1"
 
     lazy val scodec = "1.10.3"
     lazy val scodec_bits = "1.1.7"
@@ -29,7 +29,7 @@ object Dependencies {
     lazy val boopickle = "1.3.0"
 
     lazy val scalameta = "1.8.0"
-    lazy val scalametaParadise = "3.0.0-M10"
+    lazy val scalametaParadise = "3.0.0-M11"
 
     // Test dependencies
 
