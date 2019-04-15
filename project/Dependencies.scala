@@ -6,8 +6,8 @@ object Dependencies {
     val akkaPersistenceCassandra = "0.61"
     val cassandraDriverExtras = "3.1.0"
 
-    val cats = "1.4.0"
-    val catsEffect = "1.0.0"
+    val cats = "1.6.0"
+    val catsEffect = "1.2.0"
     val cats_mtl_core = "0.4.0"
     val catsTagless = "0.2.0"
 
@@ -18,7 +18,7 @@ object Dependencies {
 
     val circe = "0.10.1"
 
-    val fs2 = "1.0.0"
+    val fs2 = "1.0.3"
 
     val scodec = "1.10.3"
     val scodec_bits = "1.1.7"
