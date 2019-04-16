@@ -18,7 +18,7 @@ object Dependencies {
 
     val circe = "0.10.1"
 
-    val fs2 = "1.0.3"
+    val fs2 = "1.0.4"
 
     val scodec = "1.10.3"
     val scodec_bits = "1.1.7"
