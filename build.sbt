@@ -49,7 +49,7 @@ lazy val aecor = project
 
 def aecorModule(id: String, description: String): Project =
   Project(id, file(s"modules/$id"))
-    .settings(moduleName := id, name := description)
+    .settings(moduleName := "aecor-" + id, name := description)
 
 lazy val core = aecorModule("core", "Aecor Core")
   .settings(aecorSettings)
